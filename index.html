@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدرسة المبادئ العلمية - إن وأخواتها</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e293b, #334155, #1e293b);
+            color: white;
+            min-height: 100vh;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header */
+        .header {
+            background-color: #334155;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-bottom: 4px solid #6366f1;
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo-fallback {
+            width: 100%;
+            height: 100%;
+            background-color: #6366f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .title-section {
+            text-align: center;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 0.25rem;
+        }
+
+        .subtitle {
+            color: #cbd5e1;
+            font-size: 0.875rem;
+        }
+
+        /* Navigation */
+        .nav {
+            background-color: #475569;
+            border-bottom: 2px solid #64748b;
+            padding: 0.5rem 0;
+        }
+
+        .nav-tabs {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0;
+            background-color: #64748b;
+            border-radius: 8px;
+            margin: 0.5rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-tab {
+            padding: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .nav-tab:hover {
+            background-color: #6366f1;
+        }
+
+        .nav-tab.active {
+            background-color: #6366f1;
+        }
+
+        /* Main Content */
+        .main {
+            padding: 2rem 0;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Cards */
+        .card {
+            background-color: #334155;
+            border: 1px solid #475569;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            border-radius: 12px 12px 0 0;
+            color: white;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: #6366f1;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #5856eb;
+        }
+
+        .btn-success {
+            background-color: #10b981;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #059669;
+        }
+
+        .btn-danger {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #dc2626;
+        }
+
+        .btn-secondary {
+            background-color: #64748b;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #475569;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Home Page */
+        .home-intro {
+            text-align: center;
+            padding: 2rem;
+            background-color: #334155;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .home-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #a5b4fc;
+            margin-bottom: 1rem;
+        }
+
+        .home-description {
+            font-size: 1.125rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .activity-card {
+            background-color: #334155;
+            border: 1px solid #475569;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .activity-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .activity-header {
+            padding: 1rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .activity-content {
+            padding: 1rem;
+        }
+
+        .activity-description {
+            color: #cbd5e1;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+        }
+
+        /* Activity 1 */
+        .tool-card {
+            background-color: #334155;
+            border: 1px solid #64748b;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .tool-card.active {
+            border-color: #a5b4fc;
+            background-color: #475569;
+        }
+
+        .tool-info {
+            padding: 1rem;
+        }
+
+        .tool-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .tool-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #a5b4fc;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .tool-example {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background-color: #64748b;
+            border-radius: 8px;
+            border: 1px solid #475569;
+            color: #f1f5f9;
+        }
+
+        /* Activity 2 */
+        .question-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .difficulty-badge {
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .question-text {
+            background-color: #475569;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .question-text p {
+            font-size: 1.25rem;
+            color: #f1f5f9;
+            line-height: 1.6;
+        }
+
+        .question-prompt {
+            font-size: 1.125rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        .answer-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .result-container {
+            margin-top: 2rem;
+        }
+
+        .result-message {
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .result-correct {
+            background-color: #065f46;
+            border: 1px solid #10b981;
+            color: #10b981;
+        }
+
+        .result-incorrect {
+            background-color: #7f1d1d;
+            border: 1px solid #ef4444;
+            color: #ef4444;
+        }
+
+        .explanation {
+            background-color: #475569;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .explanation h4 {
+            font-weight: bold;
+            color: #cbd5e1;
+            margin-bottom: 0.75rem;
+        }
+
+        .explanation p {
+            color: #cbd5e1;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 0.75rem;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background-color: #475569;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #10b981;
+            transition: width 0.3s ease;
+        }
+
+        /* Activity 3 */
+        .sentence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .sentence-card {
+            padding: 1rem;
+            background-color: #475569;
+            border: 2px solid #64748b;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sentence-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .sentence-card.selected {
+            border-color: #a5b4fc;
+            background-color: #64748b;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .sentence-text {
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+
+        .tools-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .tool-button {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #64748b;
+            background-color: #475569;
+            color: #cbd5e1;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.25rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tool-button:hover {
+            border-color: #475569;
+            background-color: #64748b;
+        }
+
+        .tool-button.selected {
+            border-color: #a5b4fc;
+            background-color: #6366f1;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .transform-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .result-display {
+            background-color: #475569;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #64748b;
+        }
+
+        .result-section {
+            background-color: #64748b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .result-section:last-child {
+            background-color: #6366f1;
+        }
+
+        .result-label {
+            color: #cbd5e1;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-text {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #f1f5f9;
+        }
+
+        .result-text.highlight {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Activity 4 */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-section h3 {
+            color: #cbd5e1;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-bottom: 0.75rem;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #64748b;
+            background-color: #475569;
+            color: #cbd5e1;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-color: #a5b4fc;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(165, 180, 252, 0.2);
+        }
+
+        .form-textarea {
+            height: 6rem;
+            resize: vertical;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .preview-card {
+            background-color: #475569;
+            border: 2px solid #a5b4fc;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .preview-header {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #14b8a6);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .preview-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .preview-content {
+            padding: 2rem;
+        }
+
+        .preview-section {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid;
+        }
+
+        .preview-section.work {
+            background-color: rgba(59, 130, 246, 0.1);
+            border-color: #3b82f6;
+        }
+
+        .preview-section.meaning {
+            background-color: rgba(16, 185, 129, 0.1);
+            border-color: #10b981;
+        }
+
+        .preview-section.example {
+            background-color: rgba(245, 158, 11, 0.1);
+            border-color: #f59e0b;
+        }
+
+        .preview-section h4 {
+            font-weight: bold;
+            color: #cbd5e1;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .preview-section p {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .saved-cards {
+            margin-top: 3rem;
+        }
+
+        .saved-cards h3 {
+            color: #cbd5e1;
+            text-align: center;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .saved-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .saved-card {
+            background-color: #475569;
+            border: 1px solid #64748b;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .saved-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .saved-card-header {
+            background-color: #64748b;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .saved-card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .delete-btn {
+            background: none;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            background-color: rgba(239, 68, 68, 0.1);
+        }
+
+        .saved-card-content {
+            padding: 1.5rem;
+        }
+
+        .saved-card-section {
+            margin-bottom: 1rem;
+        }
+
+        .saved-card-section h4 {
+            font-weight: bold;
+            color: #cbd5e1;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .saved-card-section p {
+            color: #cbd5e1;
+            font-size: 0.875rem;
+            line-height: 1.4;
+        }
+
+        .saved-card-example {
+            background-color: rgba(245, 158, 11, 0.1);
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        /* Activity 5 */
+        .generate-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .example-card {
+            background-color: #475569;
+            border: 1px solid #64748b;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .example-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .example-section {
+            background-color: #64748b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .example-section h3, .example-section h4 {
+            font-weight: bold;
+            color: #cbd5e1;
+            margin-bottom: 0.75rem;
+        }
+
+        .example-sentence {
+            font-size: 1.125rem;
+            color: #cbd5e1;
+        }
+
+        .parsing-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .parsing-word {
+            font-weight: 600;
+            color: #a5b4fc;
+            min-width: 5rem;
+        }
+
+        .parsing-explanation {
+            color: #cbd5e1;
+        }
+
+        .explanation-text {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #334155;
+            border-top: 1px solid #475569;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer p {
+            margin-bottom: 0.25rem;
+        }
+
+        .footer-subtitle {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-tabs {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .nav-tab {
+                font-size: 0.75rem;
+                padding: 0.75rem 0.5rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .home-title {
+                font-size: 2rem;
+            }
+
+            .activity-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .answer-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .transform-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tools-grid {
+                justify-content: center;
+            }
+
+            .parsing-item {
+                flex-direction: column;
+            }
+        }
+
+        /* Icons */
+        .icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            display: inline-block;
+        }
+
+        .icon-lg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="C:\Users\loaia\OneDrive\Desktop\New folder\WhatsApp Image 2025-10-19 at 7.38.55 PM.jpeg" alt="شعار المدرسة" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="logo-fallback" style="display: none;">م</div>
+                </div>
+                <div class="title-section">
+                    <h1 class="title">مدرسة المبادئ العلمية</h1>
+                    <p class="subtitle">الصف التاسع</p>
+                </div>
+                <div class="logo">
+                    <img src="C:\Users\loaia\OneDrive\Desktop\New folder\WhatsApp Image 2025-10-19 at 7.37.33 PM.jpeg" alt="شعار قسم العربية" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="logo-fallback" style="display: none;">ع</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-tabs">
+                <button class="nav-tab active" onclick="showTab('home')">الرئيسية</button>
+                <button class="nav-tab" onclick="showTab('activity1')">النشاط الأول</button>
+                <button class="nav-tab" onclick="showTab('activity2')">النشاط الثاني</button>
+                <button class="nav-tab" onclick="showTab('activity3')">النشاط الثالث</button>
+                <button class="nav-tab" onclick="showTab('activity4')">النشاط الرابع</button>
+                <button class="nav-tab" onclick="showTab('activity5')">توليد أمثلة</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Home Tab -->
+            <div id="home" class="tab-content active">
+                <div class="home-intro">
+                    <h2 class="home-title">إنَّ وأخواتها</h2>
+                    <p class="home-description">
+                        تعلم الحروف الناسخة وعملها في الجملة الاسمية من خلال أنشطة تفاعلية متنوعة
+                    </p>
+                    <button class="btn btn-primary" onclick="showTab('activity1')">ابدأ التعلم</button>
+                </div>
+
+                <div class="activity-grid">
+                    <div class="activity-card" onclick="showTab('activity1')">
+                        <div class="activity-header" style="background-color: #3b82f6;">
+                            <span class="icon">📚</span>
+                            <span>النشاط الأول</span>
+                        </div>
+                        <div class="activity-content">
+                            <p class="activity-description">تعرف على إن وأخواتها</p>
+                            <button class="btn btn-secondary" style="width: 100%;">ابدأ النشاط</button>
+                        </div>
+                    </div>
+
+                    <div class="activity-card" onclick="showTab('activity2')">
+                        <div class="activity-header" style="background-color: #10b981;">
+                            <span class="icon">✅</span>
+                            <span>النشاط الثاني</span>
+                        </div>
+                        <div class="activity-content">
+                            <p class="activity-description">صح أم خطأ</p>
+                            <button class="btn btn-secondary" style="width: 100%;">ابدأ النشاط</button>
+                        </div>
+                    </div>
+
+                    <div class="activity-card" onclick="showTab('activity3')">
+                        <div class="activity-header" style="background-color: #8b5cf6;">
+                            <span class="icon">🔄</span>
+                            <span>النشاط الثالث</span>
+                        </div>
+                        <div class="activity-content">
+                            <p class="activity-description">تحويل الجمل</p>
+                            <button class="btn btn-secondary" style="width: 100%;">ابدأ النشاط</button>
+                        </div>
+                    </div>
+
+                    <div class="activity-card" onclick="showTab('activity4')">
+                        <div class="activity-header" style="background-color: #f59e0b;">
+                            <span class="icon">⭐</span>
+                            <span>النشاط الرابع</span>
+                        </div>
+                        <div class="activity-content">
+                            <p class="activity-description">البطاقات التعريفية</p>
+                            <button class="btn btn-secondary" style="width: 100%;">ابدأ النشاط</button>
+                        </div>
+                    </div>
+
+                    <div class="activity-card" onclick="showTab('activity5')">
+                        <div class="activity-header" style="background-color: #ec4899;">
+                            <span class="icon">✨</span>
+                            <span>توليد أمثلة</span>
+                        </div>
+                        <div class="activity-content">
+                            <p class="activity-description">أمثلة مع الإعراب والشرح</p>
+                            <button class="btn btn-secondary" style="width: 100%;">ابدأ النشاط</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity 1 -->
+            <div id="activity1" class="tab-content">
+                <div class="card">
+                    <div class="card-header" style="background-color: #6366f1;">
+                        <h2 class="card-title">
+                            <span class="icon">📚</span>
+                            النشاط الأول: إنَّ وأخواتها
+                        </h2>
+                        <p>انقر مرة لعرض الاستخدام • انقر مرتين لعرض المثال</p>
+                    </div>
+                    <div class="card-content">
+                        <div id="tools-container"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity 2 -->
+            <div id="activity2" class="tab-content">
+                <div class="card">
+                    <div class="card-header" style="background-color: #10b981;">
+                        <h2 class="card-title">
+                            <span class="icon">✅</span>
+                            النشاط الثاني: صح أم خطأ
+                        </h2>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div id="progress-fill" class="progress-fill" style="width: 0%;"></div>
+                            </div>
+                            <span class="badge" style="background-color: #475569; color: white;">
+                                <span id="question-counter">1 / 13</span>
+                            </span>
+                            <span class="badge" style="background-color: #eab308; color: white;">
+                                <span class="icon">🏆</span>
+                                النقاط: <span id="score">0</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div id="quiz-container"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity 3 -->
+            <div id="activity3" class="tab-content">
+                <div class="card">
+                    <div class="card-header" style="background-color: #8b5cf6;">
+                        <h2 class="card-title">
+                            <span class="icon">🔄</span>
+                            النشاط الثالث: تحويل الجمل الاسمية
+                        </h2>
+                        <p>اختر جملة اسمية ثم اختر الأداة لتحويلها</p>
+                    </div>
+                    <div class="card-content">
+                        <div>
+                            <label style="display: block; font-weight: bold; color: #cbd5e1; margin-bottom: 1rem;">
+                                <span class="icon">📚</span>
+                                اختر الجملة الاسمية:
+                            </label>
+                            <div class="sentence-grid" id="sentences-grid"></div>
+                        </div>
+
+                        <div>
+                            <label style="display: block; font-weight: bold; color: #cbd5e1; margin-bottom: 1rem;">
+                                <span class="icon">⭐</span>
+                                اختر الأداة:
+                            </label>
+                            <div class="tools-grid" id="tools-grid"></div>
+                        </div>
+
+                        <div class="transform-buttons">
+                            <button id="transform-btn" class="btn btn-primary" onclick="transformSentence()" disabled>
+                                <span class="icon">✨</span>
+                                تطبيق التحويل
+                            </button>
+                            <button class="btn btn-secondary" onclick="resetTransform()">
+                                <span class="icon">🔄</span>
+                                إعادة ضبط
+                            </button>
+                        </div>
+
+                        <div id="transform-result" class="result-display hidden"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity 4 -->
+            <div id="activity4" class="tab-content">
+                <div class="card">
+                    <div class="card-header" style="background-color: #f59e0b;">
+                        <h2 class="card-title">
+                            <span class="icon">⭐</span>
+                            النشاط الرابع: البطاقات التعريفية
+                        </h2>
+                        <p>أنشئ بطاقة تعريفية لأدوات إن وأخواتها</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="form-grid">
+                            <div class="form-section">
+                                <h3>
+                                    <span class="icon">📚</span>
+                                    إنشاء بطاقة جديدة:
+                                </h3>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">الأداة:</label>
+                                    <select id="card-tool" class="form-select">
+                                        <option value="">اختر الأداة</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">العمل:</label>
+                                    <textarea id="card-work" class="form-textarea" placeholder="مثال: حرف ناسخ ينصب الاسم ويرفع الخبر"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">الدلالات:</label>
+                                    <textarea id="card-meanings" class="form-textarea" placeholder="مثال: للتوكيد"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">أمثلة:</label>
+                                    <textarea id="card-examples" class="form-textarea" placeholder="مثال: إنَّ العلمَ نورٌ"></textarea>
+                                </div>
+
+                                <div class="form-buttons">
+                                    <button class="btn btn-primary" onclick="generateCard()">
+                                        <span class="icon">✨</span>
+                                        إنشاء البطاقة
+                                    </button>
+                                    <button id="save-card-btn" class="btn btn-success" onclick="saveCard()" disabled>
+                                        <span class="icon">💾</span>
+                                        حفظ البطاقة
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h3>
+                                    <span class="icon">⭐</span>
+                                    معاينة البطاقة:
+                                </h3>
+                                <div id="card-preview"></div>
+                            </div>
+                        </div>
+
+                        <div id="saved-cards-section" class="saved-cards hidden">
+                            <h3>
+                                <span class="icon">🏆</span>
+                                البطاقات المحفوظة (<span id="saved-count">0</span>)
+                            </h3>
+                            <div id="saved-cards-grid" class="saved-cards-grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity 5 -->
+            <div id="activity5" class="tab-content">
+                <div class="card">
+                    <div class="card-header" style="background-color: #ec4899;">
+                        <h2 class="card-title">
+                            <span class="icon">✨</span>
+                            توليد أمثلة مع الإعراب والشرح
+                        </h2>
+                        <p>أمثلة متنوعة على إن وأخواتها مع الإعراب التفصيلي</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="generate-container">
+                            <button class="btn btn-primary" onclick="generateNewExample()" style="background-color: #ec4899;">
+                                <span class="icon">✨</span>
+                                توليد مثال جديد
+                            </button>
+                        </div>
+
+                        <div id="example-container" class="example-card">
+                            <div class="card-content">
+                                <div id="current-example"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 مدرسة المبادئ العلمية - المملكة الأردنية الهاشمية</p>
+            <p class="footer-subtitle">منهاج الصف التاسع الأساسي</p>
+        </div>
+    </footer>
+
+    <script>
+        // Data structures
+        const tools = [
+            { 
+                key: "inna", 
+                label: "إنَّ", 
+                type: "توكيد", 
+                usage: "تفيد التوكيد", 
+                example: "نَّ المتعلِّمَ المجتهدَ قادرٌ على الجمع بين دراسته والإبداع في الأنشطة الثقافية والعلمية",
+                work: "حرف ناسخ ينصب الاسم ويرفع الخبر"
+            },
+            { 
+                key: "anna", 
+                label: "أنَّ", 
+                type: "توكيد/مصدرية", 
+                usage: "تأتي بعد أفعال القول والظن", 
+                example: "علمتُ أنَّ الامتحانَ قريبٌ",
+                work: "حرف ناسخ مصدري ينصب الاسم ويرفع الخبر"
+            },
+            { 
+                key: "kaanna", 
+                label: "كأنَّ", 
+                type: "تشبيه", 
+                usage: "للتشبيه", 
+                example: "كأنَّ النجومَ مصابيحُ",
+                work: "حرف ناسخ للتشبيه ينصب الاسم ويرفع الخبر"
+            },
+            { 
+                key: "lakin", 
+                label: "لكنَّ", 
+                type: "استدراك", 
+                usage: "للاستدراك", 
+                example: "الذهبُ غالٍ لكنَّ النفطَ أغلى",
+                work: "حرف ناسخ للاستدراك ينصب الاسم ويرفع الخبر"
+            },
+            { 
+                key: "layta", 
+                label: "ليتَ", 
+                type: "تمنّي", 
+                usage: "للتمني", 
+                example: "ليتَ الشبابَ يعودُ يوماً",
+                work: "حرف ناسخ للتمني ينصب الاسم ويرفع الخبر"
+            },
+            { 
+                key: "lalla", 
+                label: "لعلَّ", 
+                type: "ترجّي", 
+                usage: "للترجي والتوقع", 
+                example: "لعلَّ اللهَ يجعلُ بعد الضيق مخرجاً",
+                work: "حرف ناسخ للترجي ينصب الاسم ويرفع الخبر"
+            }
+        ];
+
+        // Mixed sentences for Activity 2
+        const mixedSentences = [
+            { text: "إنَّ المؤمنينَ مفلحونَ", isCorrect: true, difficulty: "سهل", explanation: "الجملة صحيحة: إن نصبت الاسم (المؤمنين) ورفعت الخبر (مفلحون)" },
+            { text: "كأنَّ الأرضَ بساطٌ", isCorrect: true, difficulty: "سهل", explanation: "الجملة صحيحة: كأن للتشبيه نصبت الاسم ورفعت الخبر" },
+            { text: "ليتَ الشبابَ يعودُ", isCorrect: true, difficulty: "سهل", explanation: "الجملة صحيحة: ليت للتمني نصبت الاسم ورفعت الخبر" },
+            { text: "لعلَّ اللهَ يجعلُ بعد الضيق مخرجاً", isCorrect: true, difficulty: "سهل", explanation: "الجملة صحيحة: لعل للترجي نصبت الاسم ورفعت الخبر" },
+            { text: "لكنَّ الجوَّ معتدلٌ", isCorrect: true, difficulty: "سهل", explanation: "الجملة صحيحة: لكن للاستدراك نصبت الاسم ورفعت الخبر" },
+            { text: "إنَّ الطلابُ مجتهدونَ", isCorrect: false, difficulty: "سهل", correct: "إنَّ الطلابَ مجتهدونَ", explanation: "خطأ: اسم إن يجب أن يكون منصوباً وليس مرفوعاً" },
+            { text: "كأنَّ النجومُ لؤلؤاً", isCorrect: false, difficulty: "سهل", correct: "كأنَّ النجومَ لؤلؤٌ", explanation: "خطأ: اسم كأن منصوب وخبرها مرفوع" },
+            { text: "ليتَ الأيامُ جميلةً", isCorrect: false, difficulty: "سهل", correct: "ليتَ الأيامَ جميلةٌ", explanation: "خطأ: اسم ليت منصوب وخبرها مرفوع" },
+            { text: "إنَّ المصلحينَ ساعونَ في خير الناس", isCorrect: true, difficulty: "متوسط", explanation: "الجملة صحيحة: إن نصبت الاسم ورفعت الخبر الجملة الاسمية" },
+            { text: "لعلَّ الصديقَ قادمٌ غداً", isCorrect: true, difficulty: "متوسط", explanation: "الجملة صحيحة: لعل نصبت الاسم ورفعت الخبر" },
+            { text: "أنَّ العلمُ مفيدٌ", isCorrect: false, difficulty: "متوسط", correct: "إنَّ العلمَ مفيدٌ", explanation: "خطأ: أن لا تأتي في بداية الكلام، بل بعد أفعال القول والظن" },
+            { text: "لكنَّ الطقسُ حاراً", isCorrect: false, difficulty: "متوسط", correct: "لكنَّ الطقسَ حارٌّ", explanation: "خطأ: اسم لكن منصوب وخبرها مرفوع" },
+            { text: "إنَّ الكتابُ والقلمُ مفيدانِ", isCorrect: false, difficulty: "متوسط", correct: "إنَّ الكتابَ والقلمَ مفيدانِ", explanation: "خطأ: اسم إن وما عطف عليه يجب أن يكونا منصوبين" }
+        ];
+
+        // Extended sentences for Activity 3
+        const extendedSentences = [
+            { sentence: "المتعلمُ مجتهدٌ", difficulty: "سهل" },
+            { sentence: "العلمُ نافعٌ", difficulty: "سهل" },
+            { sentence: "الجوُّ معتدلٌ", difficulty: "سهل" },
+            { sentence: "المعلمُ قدوةٌ", difficulty: "سهل" },
+            { sentence: "الوطنُ عزيزٌ", difficulty: "سهل" },
+            { sentence: "الطلابُ نشيطونَ في الدراسة", difficulty: "متوسط" },
+            { sentence: "الكتابُ مفيدٌ جداً", difficulty: "متوسط" },
+            { sentence: "المطرُ نازلٌ بغزارة", difficulty: "متوسط" },
+            { sentence: "الامتحانُ صعبٌ نوعاً ما", difficulty: "متوسط" },
+            { sentence: "الأطفالُ يلعبونَ في الحديقة", difficulty: "متوسط" },
+            { sentence: "المهندسونَ والعمالُ يعملونَ بجدّ", difficulty: "صعب" },
+            { sentence: "الطلابُ والمعلمونَ حاضرونَ", difficulty: "صعب" },
+            { sentence: "الشمسُ والقمرُ آياتٌ عظيمةٌ", difficulty: "صعب" },
+            { sentence: "المكتبةُ والمختبرُ مفتوحانِ", difficulty: "صعب" },
+            { sentence: "الصبرُ والعملُ الجادُّ مفتاحا النجاح", difficulty: "صعب" }
+        ];
+
+        // Generated examples for Activity 5
+        const generatedExamples = [
+            {
+                sentence: "إنَّ الطالبَ مجتهدٌ",
+                difficulty: "سهل",
+                tool: "إنَّ",
+                parsing: {
+                    "إنَّ": "حرف ناسخ مبني على الفتح",
+                    "الطالبَ": "اسم إن منصوب وعلامة نصبه الفتحة الظاهرة على آخره",
+                    "مجتهدٌ": "خبر إن مرفوع وعلامة رفعه الضمة الظاهرة على آخره"
+                },
+                explanation: "دخلت إن على الجملة الاسمية (الطالب مجتهد) فنصبت المبتدأ (الطالب) وأصبح اسمها، ورفعت الخبر (مجتهد) وأصبح خبرها"
+            },
+            {
+                sentence: "أنَّ العلمَ نورٌ",
+                difficulty: "سهل", 
+                tool: "أنَّ",
+                parsing: {
+                    "أنَّ": "حرف ناسخ مبني على الفتح",
+                    "العلمَ": "اسم أن منصوب وعلامة نصبه الفتحة الظاهرة على آخره",
+                    "نورٌ": "خبر أن مرفوع وعلامة رفعه الضمة الظاهرة على آخره"
+                },
+                explanation: "أن وما بعدها في تأويل مصدر، والتقدير: كون العلم نوراً"
+            },
+            {
+                sentence: "كأنَّ القمرَ مصباحٌ",
+                difficulty: "سهل",
+                tool: "كأنَّ", 
+                parsing: {
+                    "كأنَّ": "حرف ناسخ مبني على الفتح للتشبيه",
+                    "القمرَ": "اسم كأن منصوب وعلامة نصبه الفتحة الظاهرة على آخره",
+                    "مصباحٌ": "خبر كأن مرفوع وعلامة رفعه الضمة الظاهرة على آخره"
+                },
+                explanation: "كأن للتشبيه، شبهت القمر بالمصباح في الإضاءة"
+            },
+            {
+                sentence: "ليتَ الصيفَ دائمٌ",
+                difficulty: "سهل",
+                tool: "ليتَ",
+                parsing: {
+                    "ليتَ": "حرف ناسخ مبني على الفتح للتمني",
+                    "الصيفَ": "اسم ليت منصوب وعلامة نصبه الفتحة الظاهرة على آخره", 
+                    "دائمٌ": "خبر ليت مرفوع وعلامة رفعه الضمة الظاهرة على آخره"
+                },
+                explanation: "ليت للتمني، تمنى المتكلم أن يكون الصيف دائماً"
+            },
+            {
+                sentence: "لعلَّ الغيثَ نازلٌ",
+                difficulty: "سهل",
+                tool: "لعلَّ",
+                parsing: {
+                    "لعلَّ": "حرف ناسخ مبني على الفتح للترجي",
+                    "الغيثَ": "اسم لعل منصوب وعلامة نصبه الفتحة الظاهرة على آخره",
+                    "نازلٌ": "خبر لعل مرفوع وعلامة رفعه الضمة الظاهرة على آخره"
+                },
+                explanation: "لعل للترجي، ترجى المتكلم نزول المطر"
+            },
+            {
+                sentence: "إنَّ المعلمينَ مخلصونَ في عملهم",
+                difficulty: "متوسط",
+                tool: "إنَّ",
+                parsing: {
+                    "إنَّ": "حرف ناسخ مبني على الفتح",
+                    "المعلمينَ": "اسم إن منصوب وعلامة نصبه الياء لأنه جمع مذكر سالم",
+                    "مخلصونَ": "خبر إن مرفوع وعلامة رفعه الواو لأنه جمع مذكر سالم",
+                    "في عملهم": "جار ومجرور متعلق بالخبر"
+                },
+                explanation: "اسم إن جمع مذكر سالم فينصب بالياء، وخبرها جمع مذكر سالم فيرفع بالواو"
+            }
+        ];
+
+        // Global state
+        let currentTab = 'home';
+        let cardViews = {};
+        let currentQuestion = 0;
+        let userAnswers = [];
+        let showResult = false;
+        let score = 0;
+        let shuffledQuestions = [];
+        let selectedSentence = "";
+        let selectedTool = "";
+        let transformedSentence = "";
+        let shuffledSentences = [];
+        let cardData = {
+            tool: "",
+            work: "",
+            meanings: "",
+            notes: "",
+            examples: ""
+        };
+        let savedCards = [];
+        let currentExampleIndex = 0;
+
+        // Utility functions
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        function getBadgeColor(type) {
+            const colors = {
+                'توكيد': 'background-color: #3b82f6; color: #dbeafe;',
+                'تشبيه': 'background-color: #10b981; color: #d1fae5;',
+                'استدراك': 'background-color: #8b5cf6; color: #ede9fe;',
+                'تمنّي': 'background-color: #ec4899; color: #fce7f3;',
+                'ترجّي': 'background-color: #f59e0b; color: #fef3c7;',
+                'توكيد/مصدرية': 'background-color: #6b7280; color: #f3f4f6;'
+            };
+            return colors[type] || 'background-color: #6b7280; color: #f3f4f6;';
+        }
+
+        function getDifficultyColor(difficulty) {
+            const colors = {
+                'سهل': 'background-color: #10b981; color: #d1fae5;',
+                'متوسط': 'background-color: #eab308; color: #fef3c7;',
+                'صعب': 'background-color: #ef4444; color: #fecaca;'
+            };
+            return colors[difficulty] || 'background-color: #6b7280; color: #f3f4f6;';
+        }
+
+        // Navigation functions
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all nav tabs
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to selected nav tab
+            document.querySelector(`[onclick="showTab('${tabName}')"]`).classList.add('active');
+            
+            currentTab = tabName;
+            
+            // Initialize tab content
+            if (tabName === 'activity1') {
+                initActivity1();
+            } else if (tabName === 'activity2') {
+                initActivity2();
+            } else if (tabName === 'activity3') {
+                initActivity3();
+            } else if (tabName === 'activity4') {
+                initActivity4();
+            } else if (tabName === 'activity5') {
+                initActivity5();
+            }
+        }
+
+        // Activity 1 functions
+        function initActivity1() {
+            const container = document.getElementById('tools-container');
+            container.innerHTML = '';
+            
+            tools.forEach(tool => {
+                const toolCard = document.createElement('div');
+                toolCard.className = 'tool-card';
+                toolCard.id = `tool-${tool.key}`;
+                
+                toolCard.innerHTML = `
+                    <div class="tool-info">
+                        <div class="tool-header">
+                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                <span class="tool-name">${tool.label}</span>
+                                <span class="badge" style="${getBadgeColor(tool.type)}">${tool.type}</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;" id="tool-status-${tool.key}">
+                            </div>
+                        </div>
+                        <div id="tool-content-${tool.key}" class="tool-example hidden"></div>
+                    </div>
+                `;
+                
+                toolCard.onclick = () => handleCardClick(tool.key);
+                toolCard.ondblclick = () => handleCardDoubleClick(tool.key);
+                
+                container.appendChild(toolCard);
+            });
+        }
+
+        function handleCardClick(toolKey) {
+            const tool = tools.find(t => t.key === toolKey);
+            const card = document.getElementById(`tool-${toolKey}`);
+            const content = document.getElementById(`tool-content-${toolKey}`);
+            const status = document.getElementById(`tool-status-${toolKey}`);
+            
+            if (cardViews[toolKey] === 'usage') {
+                cardViews[toolKey] = null;
+                card.classList.remove('active');
+                content.classList.add('hidden');
+                status.innerHTML = '';
+            } else {
+                cardViews[toolKey] = 'usage';
+                card.classList.add('active');
+                content.classList.remove('hidden');
+                content.innerHTML = `<p>${tool.usage}</p>`;
+                status.innerHTML = `
+                    <span class="badge" style="background-color: #64748b; color: #cbd5e1; font-size: 0.75rem;">
+                        <span class="icon">ℹ️</span>
+                        الاستخدام
+                    </span>
+                `;
+            }
+        }
+
+        function handleCardDoubleClick(toolKey) {
+            const tool = tools.find(t => t.key === toolKey);
+            const card = document.getElementById(`tool-${toolKey}`);
+            const content = document.getElementById(`tool-content-${toolKey}`);
+            const status = document.getElementById(`tool-status-${toolKey}`);
+            
+            cardViews[toolKey] = 'example';
+            card.classList.add('active');
+            content.classList.remove('hidden');
+            content.innerHTML = `<p>${tool.example}</p>`;
+            status.innerHTML = `
+                <span class="badge" style="background-color: #64748b; color: #cbd5e1; font-size: 0.75rem;">
+                    <span class="icon">📚</span>
+                    المثال
+                </span>
+            `;
+        }
+
+        // Activity 2 functions
+        function initActivity2() {
+            shuffledQuestions = shuffleArray(mixedSentences);
+            currentQuestion = 0;
+            userAnswers = [];
+            showResult = false;
+            score = 0;
+            
+            updateQuizDisplay();
+        }
+
+        function updateQuizDisplay() {
+            const container = document.getElementById('quiz-container');
+            const progressFill = document.getElementById('progress-fill');
+            const questionCounter = document.getElementById('question-counter');
+            const scoreElement = document.getElementById('score');
+            
+            // Update progress
+            const progress = (currentQuestion / shuffledQuestions.length) * 100;
+            progressFill.style.width = `${progress}%`;
+            questionCounter.textContent = `${currentQuestion + 1} / ${shuffledQuestions.length}`;
+            scoreElement.textContent = score;
+            
+            if (currentQuestion < shuffledQuestions.length) {
+                const question = shuffledQuestions[currentQuestion];
+                
+                container.innerHTML = `
+                    <div class="question-container">
+                        <span class="badge difficulty-badge" style="${getDifficultyColor(question.difficulty)}">${question.difficulty}</span>
+                        <div class="question-text">
+                            <p>${question.text}</p>
+                        </div>
+                        <p class="question-prompt">هل هذه الجملة صحيحة أم خاطئة؟</p>
+                    </div>
+                    
+                    ${!showResult ? `
+                        <div class="answer-buttons">
+                            <button class="btn btn-success" onclick="handleTrueFalseAnswer('true')">
+                                <span class="icon">✅</span>
+                                صح
+                            </button>
+                            <button class="btn btn-danger" onclick="handleTrueFalseAnswer('false')">
+                                <span class="icon">❌</span>
+                                خطأ
+                            </button>
+                        </div>
+                    ` : `
+                        <div class="result-container">
+                            <div class="result-message ${userAnswers[currentQuestion]?.isCorrect ? 'result-correct' : 'result-incorrect'}">
+                                <span class="icon">${userAnswers[currentQuestion]?.isCorrect ? '✅' : '❌'}</span>
+                                <span>${userAnswers[currentQuestion]?.isCorrect ? 'أحسنت! إجابة صحيحة' : 'إجابة خاطئة'}</span>
+                            </div>
+                            
+                            <div class="explanation">
+                                <h4>التفسير:</h4>
+                                ${!question.isCorrect ? `
+                                    <p><strong>الصحيح:</strong> ${question.correct}</p>
+                                ` : ''}
+                                <p><strong>السبب:</strong> ${question.explanation}</p>
+                            </div>
+                            
+                            <div style="display: flex; gap: 1rem; justify-content: center;">
+                                ${currentQuestion < shuffledQuestions.length - 1 ? `
+                                    <button class="btn btn-primary" onclick="nextQuestion()">السؤال التالي</button>
+                                ` : `
+                                    <button class="btn btn-primary" onclick="resetQuiz()">
+                                        <span class="icon">🔄</span>
+                                        إعادة المحاولة
+                                    </button>
+                                `}
+                            </div>
+                        </div>
+                    `}
+                `;
+            } else {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 2rem;">
+                        <div style="background-color: #475569; padding: 2rem; border-radius: 8px; border: 1px solid #64748b;">
+                            <span class="icon" style="font-size: 3rem;">🏆</span>
+                            <h3 style="font-size: 1.5rem; font-weight: bold; color: #cbd5e1; margin: 1rem 0;">انتهى الاختبار!</h3>
+                            <p style="font-size: 1.125rem; color: #cbd5e1; margin-bottom: 2rem;">
+                                نقاطك: <span style="font-weight: bold; color: #10b981;">${score}</span> من ${shuffledQuestions.length}
+                            </p>
+                            <button class="btn btn-primary" onclick="resetQuiz()">
+                                <span class="icon">🔄</span>
+                                إعادة المحاولة
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function handleTrueFalseAnswer(answer) {
+            const currentSentence = shuffledQuestions[currentQuestion];
+            const isCorrect = (answer === 'true' && currentSentence.isCorrect) || 
+                             (answer === 'false' && !currentSentence.isCorrect);
+            
+            userAnswers.push({ answer, isCorrect });
+            showResult = true;
+            if (isCorrect) score++;
+            
+            updateQuizDisplay();
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            showResult = false;
+            updateQuizDisplay();
+        }
+
+        function resetQuiz() {
+            shuffledQuestions = shuffleArray(mixedSentences);
+            currentQuestion = 0;
+            userAnswers = [];
+            showResult = false;
+            score = 0;
+            updateQuizDisplay();
+        }
+
+        // Activity 3 functions
+        function initActivity3() {
+            shuffledSentences = shuffleArray(extendedSentences);
+            selectedSentence = "";
+            selectedTool = "";
+            transformedSentence = "";
+            
+            updateActivity3Display();
+        }
+
+        function updateActivity3Display() {
+            const sentencesGrid = document.getElementById('sentences-grid');
+            const toolsGrid = document.getElementById('tools-grid');
+            
+            // Update sentences
+            sentencesGrid.innerHTML = '';
+            shuffledSentences.forEach(sentenceObj => {
+                const button = document.createElement('button');
+                button.className = `sentence-card ${selectedSentence === sentenceObj.sentence ? 'selected' : ''}`;
+                button.innerHTML = `
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span class="badge" style="${getDifficultyColor(sentenceObj.difficulty)}">${sentenceObj.difficulty}</span>
+                    </div>
+                    <p class="sentence-text">${sentenceObj.sentence}</p>
+                `;
+                button.onclick = () => selectSentence(sentenceObj.sentence);
+                sentencesGrid.appendChild(button);
+            });
+            
+            // Update tools
+            toolsGrid.innerHTML = '';
+            tools.forEach(tool => {
+                const button = document.createElement('button');
+                button.className = `tool-button ${selectedTool === tool.key ? 'selected' : ''}`;
+                button.textContent = tool.label;
+                button.onclick = () => selectTool(tool.key);
+                toolsGrid.appendChild(button);
+            });
+            
+            // Update transform button
+            const transformBtn = document.getElementById('transform-btn');
+            transformBtn.disabled = !selectedSentence || !selectedTool;
+        }
+
+        function selectSentence(sentence) {
+            selectedSentence = sentence;
+            updateActivity3Display();
+        }
+
+        function selectTool(toolKey) {
+            selectedTool = toolKey;
+            updateActivity3Display();
+        }
+
+        function transformSentence() {
+            if (!selectedSentence || !selectedTool) return;
+            
+            const tool = tools.find(t => t.key === selectedTool);
+            if (!tool) return;
+
+            let transformed = "";
+            
+            // Transform based on sentence and tool
+            const transformations = {
+                "المتعلمُ مجتهدٌ": {
+                    "inna": "إنَّ المتعلمَ مجتهدٌ",
+                    "anna": "علمتُ أنَّ المتعلمَ مجتهدٌ",
+                    "kaanna": "كأنَّ المتعلمَ مجتهدٌ",
+                    "lakin": "لكنَّ المتعلمَ مجتهدٌ",
+                    "layta": "ليتَ المتعلمَ مجتهدٌ",
+                    "lalla": "لعلَّ المتعلمَ مجتهدٌ"
+                },
+                "العلمُ نافعٌ": {
+                    "inna": "إنَّ العلمَ نافعٌ",
+                    "anna": "أعلمُ أنَّ العلمَ نافعٌ",
+                    "kaanna": "كأنَّ العلمَ نافعٌ",
+                    "lakin": "لكنَّ العلمَ نافعٌ",
+                    "layta": "ليتَ العلمَ نافعٌ",
+                    "lalla": "لعلَّ العلمَ نافعٌ"
+                },
+                "المهندسونَ والعمالُ يعملونَ بجدّ": {
+                    "inna": "إنَّ المهندسينَ والعمالَ يعملونَ بجدّ",
+                    "anna": "أعلمُ أنَّ المهندسينَ والعمالَ يعملونَ بجدّ",
+                    "kaanna": "كأنَّ المهندسينَ والعمالَ يعملونَ بجدّ",
+                    "lakin": "لكنَّ المهندسينَ والعمالَ يعملونَ بجدّ",
+                    "layta": "ليتَ المهندسينَ والعمالَ يعملونَ بجدّ",
+                    "lalla": "لعلَّ المهندسينَ والعمالَ يعملونَ بجدّ"
+                }
+            };
+            
+            if (transformations[selectedSentence] && transformations[selectedSentence][selectedTool]) {
+                transformed = transformations[selectedSentence][selectedTool];
+            } else {
+                // Default transformation for other sentences
+                if (selectedTool === 'inna') {
+                    transformed = selectedSentence.replace(/ُ/, 'َ').replace(/^/, 'إنَّ ');
+                }
+            }
+            
+            transformedSentence = transformed;
+            displayTransformResult();
+        }
+
+        function displayTransformResult() {
+            const resultDiv = document.getElementById('transform-result');
+            
+            if (transformedSentence) {
+                resultDiv.innerHTML = `
+                    <h4 style="font-weight: bold; color: #cbd5e1; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <span class="icon">✅</span>
+                        النتيجة:
+                    </h4>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="result-section">
+                            <p class="result-label"><strong>قبل التحويل:</strong></p>
+                            <p class="result-text">${selectedSentence}</p>
+                        </div>
+                        <div class="result-section">
+                            <p class="result-label"><strong>بعد التحويل:</strong></p>
+                            <p class="result-text highlight">${transformedSentence}</p>
+                        </div>
+                    </div>
+                `;
+                resultDiv.classList.remove('hidden');
+            }
+        }
+
+        function resetTransform() {
+            selectedSentence = "";
+            selectedTool = "";
+            transformedSentence = "";
+            document.getElementById('transform-result').classList.add('hidden');
+            updateActivity3Display();
+        }
+
+        // Activity 4 functions
+        function initActivity4() {
+            // Populate tool select
+            const toolSelect = document.getElementById('card-tool');
+            toolSelect.innerHTML = '<option value="">اختر الأداة</option>';
+            tools.forEach(tool => {
+                const option = document.createElement('option');
+                option.value = tool.key;
+                option.textContent = tool.label;
+                toolSelect.appendChild(option);
+            });
+            
+            // Add event listeners
+            toolSelect.onchange = updateCardPreview;
+            document.getElementById('card-work').oninput = updateCardPreview;
+            document.getElementById('card-meanings').oninput = updateCardPreview;
+            document.getElementById('card-examples').oninput = updateCardPreview;
+            
+            updateSavedCardsDisplay();
+        }
+
+        function updateCardPreview() {
+            const toolKey = document.getElementById('card-tool').value;
+            const work = document.getElementById('card-work').value;
+            const meanings = document.getElementById('card-meanings').value;
+            const examples = document.getElementById('card-examples').value;
+            
+            cardData = { tool: toolKey, work, meanings, examples };
+            
+            const preview = document.getElementById('card-preview');
+            const saveBtn = document.getElementById('save-card-btn');
+            
+            if (toolKey) {
+                const tool = tools.find(t => t.key === toolKey);
+                preview.innerHTML = `
+                    <div class="preview-card">
+                        <div class="preview-header">
+                            <h3 class="preview-title">${tool.label}</h3>
+                        </div>
+                        <div class="preview-content">
+                            <div class="preview-section work">
+                                <h4><span class="icon">ℹ️</span> العمل:</h4>
+                                <p>${work || tool.work}</p>
+                            </div>
+                            <div class="preview-section meaning">
+                                <h4><span class="icon">✅</span> الدلالة:</h4>
+                                <p>${meanings || tool.usage}</p>
+                            </div>
+                            <div class="preview-section example">
+                                <h4><span class="icon">📚</span> مثال:</h4>
+                                <p>${examples || tool.example}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                saveBtn.disabled = !toolKey || !work || !meanings || !examples;
+            } else {
+                preview.innerHTML = '';
+                saveBtn.disabled = true;
+            }
+        }
+
+        function generateCard() {
+            const toolKey = document.getElementById('card-tool').value;
+            if (toolKey) {
+                const tool = tools.find(t => t.key === toolKey);
+                document.getElementById('card-work').value = tool.work;
+                document.getElementById('card-meanings').value = tool.usage;
+                document.getElementById('card-examples').value = tool.example;
+                updateCardPreview();
+            }
+        }
+
+        function saveCard() {
+            const toolKey = document.getElementById('card-tool').value;
+            const work = document.getElementById('card-work').value;
+            const meanings = document.getElementById('card-meanings').value;
+            const examples = document.getElementById('card-examples').value;
+            
+            if (toolKey && work && meanings && examples) {
+                const tool = tools.find(t => t.key === toolKey);
+                const newCard = {
+                    id: Date.now(),
+                    tool: toolKey,
+                    toolLabel: tool.label,
+                    work,
+                    meanings,
+                    examples
+                };
+                
+                savedCards.push(newCard);
+                
+                // Reset form
+                document.getElementById('card-tool').value = "";
+                document.getElementById('card-work').value = "";
+                document.getElementById('card-meanings').value = "";
+                document.getElementById('card-examples').value = "";
+                updateCardPreview();
+                updateSavedCardsDisplay();
+            }
+        }
+
+        function updateSavedCardsDisplay() {
+            const section = document.getElementById('saved-cards-section');
+            const grid = document.getElementById('saved-cards-grid');
+            const count = document.getElementById('saved-count');
+            
+            count.textContent = savedCards.length;
+            
+            if (savedCards.length > 0) {
+                section.classList.remove('hidden');
+                grid.innerHTML = '';
+                
+                savedCards.forEach(card => {
+                    const cardElement = document.createElement('div');
+                    cardElement.className = 'saved-card';
+                    cardElement.innerHTML = `
+                        <div class="saved-card-header">
+                            <span class="saved-card-title">${card.toolLabel}</span>
+                            <button class="delete-btn" onclick="deleteCard(${card.id})">
+                                <span class="icon">❌</span>
+                            </button>
+                        </div>
+                        <div class="saved-card-content">
+                            <div class="saved-card-section">
+                                <h4>العمل:</h4>
+                                <p>${card.work}</p>
+                            </div>
+                            <div class="saved-card-section">
+                                <h4>الدلالة:</h4>
+                                <p>${card.meanings}</p>
+                            </div>
+                            <div class="saved-card-section">
+                                <h4>مثال:</h4>
+                                <p class="saved-card-example">${card.examples}</p>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(cardElement);
+                });
+            } else {
+                section.classList.add('hidden');
+            }
+        }
+
+        function deleteCard(cardId) {
+            savedCards = savedCards.filter(card => card.id !== cardId);
+            updateSavedCardsDisplay();
+        }
+
+        // Activity 5 functions
+        function initActivity5() {
+            currentExampleIndex = 0;
+            displayCurrentExample();
+        }
+
+        function generateNewExample() {
+            currentExampleIndex = Math.floor(Math.random() * generatedExamples.length);
+            displayCurrentExample();
+        }
+
+        function displayCurrentExample() {
+            const container = document.getElementById('current-example');
+            const example = generatedExamples[currentExampleIndex];
+            
+            if (example) {
+                container.innerHTML = `
+                    <div class="example-header">
+                        <span class="badge" style="${getDifficultyColor(example.difficulty)}">${example.difficulty}</span>
+                        <span class="badge" style="background-color: #ec4899; color: #fce7f3;">${example.tool}</span>
+                    </div>
+                    
+                    <div class="example-section">
+                        <h3>المثال:</h3>
+                        <p class="example-sentence">${example.sentence}</p>
+                    </div>
+
+                    <div class="example-section">
+                        <h4>الإعراب:</h4>
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            ${Object.entries(example.parsing).map(([word, parsing]) => `
+                                <div class="parsing-item">
+                                    <span class="parsing-word">${word}:</span>
+                                    <span class="parsing-explanation">${parsing}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="example-section">
+                        <h4>الشرح:</h4>
+                        <p class="explanation-text">${example.explanation}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize the website
+        document.addEventListener('DOMContentLoaded', function() {
+            showTab('home');
+        });
+    </script>
+</body>
+</html>
